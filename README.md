@@ -13,5 +13,5 @@ Se citesc dintr-un fișier datele unor clienți bancari (id - care e un număr d
 - IntelliJ IDEA (recomandat) sau orice mediu care poate compila și rula cod Java
 
 ## Autor
- 
+
 Nimrod Moldovan ([@nimrodmoldovan](https://github.com/nimrodmoldovan))
