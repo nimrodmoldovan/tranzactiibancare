@@ -1,30 +1,28 @@
 package io.github.nimrodmoldovan.tranzactiibancare;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Map;
+import java.util.logging.Logger;
 
 public class Main {
+    private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "[%4$s] | %1$tF %1$tT | %5$s%n");
+        LOG.info("Pornire aplicatie");
         String inputPath = "data/clienti.csv";
-        try (BufferedReader reader = Files.newBufferedReader(Paths.get(inputPath))) {
-            String line;
-            int lineNumber = 0;
-            while ((line = reader.readLine()) != null) {
-                lineNumber++;
-                if (line.trim().isEmpty()) {
-                    continue;
-                }
-                try {
-                    BankClient client = BankClient.fromCsv(line);
-                    System.out.println(client);
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Linia " + lineNumber + " ignorata: " + e.getMessage());
-                }
+        String outputPath = "data/clienti-out.csv";
+        ClientRepository repository = new ClientRepository();
+        try {
+            Map<Integer, BankClient> clients = repository.load(inputPath);
+            for (BankClient client : clients.values()) {
+                System.out.println(client);
             }
+            repository.save(outputPath, clients.values());
         } catch (IOException e) {
-            System.err.println("Eroare la citirea fisierului " + inputPath + ": " + e.getMessage());
+            System.err.println("Eroare de fisier: " + e.getMessage());
         }
+        LOG.info("Inchidere aplicatie");
     }
 }
