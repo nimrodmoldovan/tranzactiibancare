@@ -39,11 +39,13 @@ public class Main {
         try {
             Map<Integer, BankClient> clients = repository.load(inputPath);
             BankService service = new BankService(clients);
+            System.out.println("--------LISTA CLIENTILOR--------");
             for (BankClient client : clients.values()) {
                 System.out.println(client);
             }
             try (Scanner scanner = new Scanner(System.in)) {
                 while (true) {
+                    System.out.println("--------TRANZACTIE--------");
                     System.out.print("ID client (exit pentru salvare): ");
                     String idText = scanner.nextLine().trim();
                     if (idText.equalsIgnoreCase("exit")) {
