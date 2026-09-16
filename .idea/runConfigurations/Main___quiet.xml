@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main --quiet" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="io.github.nimrodmoldovan.tranzactiibancare.Main" />
+    <module name="TranzactiiBancare" />
+    <option name="PROGRAM_PARAMETERS" value="--quiet" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="io.github.nimrodmoldovan.tranzactiibancare.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
